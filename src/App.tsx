@@ -1,25 +1,52 @@
+import {
+  Link,
+  Route,
+  BrowserRouter as Router,
+  Switch
+} from "react-router-dom";
+
+import FormikForm from "./Formik/FormikForm";
+import Home from "./Home";
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import ReactHookForm from "./ReactHookForm";
+import { initializeIcons } from '@uifabric/icons';
+
+initializeIcons(/* optional base url */);
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        {/* <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/form">Form</Link>
+            </li>
+            <li>
+              <Link to="/users">Users</Link>
+            </li>
+          </ul>
+        </nav> */}
+
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Switch>
+          <Route path="/react-hook-form">
+            <ReactHookForm />
+          </Route>
+          <Route path="/formik-form">
+            <FormikForm />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
